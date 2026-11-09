@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Розподіл символьних даних</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Дослідження розподілу символьних даних</h1>
+    <p class="subtitle">Лабораторна робота №1 · Комп'ютерні технології аналізу даних · Ярмак Ю. О.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Текст для аналізу</h2>
+      <textarea id="text" rows="10" placeholder="Вставте текст, завантажте файл або посилання на текстовий документ"></textarea>
+
+      <div class="row">
+        <label class="button secondary">
+          Файл з диска…
+          <input type="file" id="file" accept=".txt,text/plain" hidden>
+        </label>
+        <input type="url" id="url" placeholder="https://… посилання на текстовий документ">
+        <button type="button" id="load-url" class="secondary">Завантажити за посиланням</button>
+      </div>
+
+      <div class="row">
+        <button type="button" id="sample" class="secondary">Приклад тексту</button>
+        <button type="button" id="clear" class="secondary">Очистити</button>
+        <label class="check"><input type="checkbox" id="include-spaces" checked> враховувати пробіли</label>
+        <label class="check"><input type="checkbox" id="include-line-breaks"> враховувати переходи на новий рядок</label>
+        <button type="button" id="analyze" class="primary">Аналізувати</button>
+      </div>
+      <p class="hint">Регістр враховується: «А» і «а» — різні символи. Pn = k<sub>i</sub> / k<sub>s</sub>.</p>
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <section id="results" hidden>
+      <div class="card summary">
+        <div><span class="label">Загальна кількість символів k<sub>s</sub></span><span id="total" class="value"></span></div>
+        <div><span class="label">Різних символів</span><span id="unique" class="value"></span></div>
+        <div class="min"><span class="label">P<sub>n min</sub></span><span id="min-info" class="value small"></span></div>
+        <div class="max"><span class="label">P<sub>n max</sub></span><span id="max-info" class="value small"></span></div>
+      </div>
+
+      <div class="card">
+        <div class="row space-between">
+          <h2>Діаграма розподілу символів</h2>
+          <label>Сортування
+            <select id="sort">
+              <option value="freq">за частотою (спадання)</option>
+              <option value="symbol">за символом</option>
+            </select>
+          </label>
+        </div>
+        <div class="legend">
+          <span><i class="swatch bar"></i>символ</span>
+          <span><i class="swatch max"></i>P<sub>n max</sub></span>
+          <span><i class="swatch min"></i>P<sub>n min</sub></span>
+        </div>
+        <div class="chart-scroll"><canvas id="chart"></canvas></div>
+      </div>
+
+      <div class="card">
+        <div class="row space-between">
+          <h2>Таблиця показників</h2>
+          <button type="button" id="export-csv" class="secondary">Експорт у CSV</button>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>№</th><th>Символ</th><th>k<sub>i</sub></th><th>P<sub>n</sub></th></tr></thead>
+            <tbody id="table-body"></tbody>
+            <tfoot><tr><td colspan="3">Сума P<sub>n</sub></td><td id="p-sum"></td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/sample.js"></script>
+  <script src="js/analysis.js"></script>
+  <script src="js/chart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
