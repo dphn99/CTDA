@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Експертна оцінка засобів Data Mining</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Експертна оцінка засобів збору та інтелектуального аналізу даних</h1>
+    <p class="subtitle">Лабораторна робота №2 · Комп'ютерні технології аналізу даних · Варіант 8 · Ярмак Ю. О.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Шкала оцінювання</h2>
+      <p class="hint">Кожен критерій оцінюється за 10-бальною шкалою: 1 — дуже погано, 10 — дуже добре.</p>
+      <table class="scale">
+        <thead><tr><th>Бали</th><th>Значення</th><th>Опис</th></tr></thead>
+        <tbody id="scale-body"></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <div class="row space-between">
+        <h2>Зведена таблиця експертних оцінок</h2>
+        <button type="button" id="reset" class="secondary">Скинути оцінки</button>
+      </div>
+      <p class="hint">Бали можна змінити — суми, середні значення та діаграма перераховуються автоматично.</p>
+      <div class="table-scroll">
+        <table class="scores">
+          <thead><tr id="scores-head"></tr></thead>
+          <tbody id="scores-body"></tbody>
+          <tfoot id="scores-foot"></tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Порівняльна діаграма оцінок</h2>
+      <div id="legend" class="legend"></div>
+      <div class="chart-scroll"><canvas id="chart"></canvas></div>
+      <h3>Підсумковий рейтинг</h3>
+      <ol id="ranking"></ol>
+    </section>
+
+    <section class="card">
+      <h2>Аналітичні висновки</h2>
+      <div id="conclusions"></div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/chart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
